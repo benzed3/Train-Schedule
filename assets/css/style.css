@@ -1,0 +1,73 @@
+body {
+    background: whitesmoke;
+}
+
+#header {
+    text-align: center;
+    background: coral;
+    color: white;
+    padding: 50px 0 50px 0;
+    border-style: solid;
+    border-color: darkgoldenrod;
+}
+
+#border {
+    border-style: solid;
+    border-color: rgb(9, 145, 190);
+    border-radius: 5px;
+    padding: 0;
+}
+
+#add-info {
+    padding-left: 10px;
+}
+
+label {
+    padding-left: 8px;
+}
+
+#trainText {
+    background: rgb(9, 145, 190);
+    color: white;
+    padding-left: 8px;
+}
+
+#addTrain {
+    background: rgb(9, 145, 190);
+    color: white;
+    padding-left: 8px;
+}
+
+input[type=text] {
+    width: 98%;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+input[type=number] {
+    width: 98%;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+input[type=submit] {
+    background: rgb(9, 145, 190);
+    color: white;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#submit {
+    margin-left: 8px;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+}
+
+td {
+    width: 25%;
+}
