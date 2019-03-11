@@ -11,6 +11,10 @@ body {
     border-color: darkgoldenrod;
 }
 
+.row {
+    background: white;
+}
+
 #border {
     border-style: solid;
     border-color: rgb(9, 145, 190);
