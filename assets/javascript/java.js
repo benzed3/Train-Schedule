@@ -69,7 +69,7 @@ database.ref().on("child_added", function (childSnapshot) {
         childSnapshot.val().train +
         " </td><td> " + childSnapshot.val().destination +
         " </td><td> " + childSnapshot.val().frequency +
-        " </td><td> " + arrival +
+        " </td><td> " + moment(arrival).format("hh:mm") +
         " </td><td> " + minutes +
         " </td></tr><table>");
 
