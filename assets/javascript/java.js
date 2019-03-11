@@ -18,13 +18,14 @@ var destination = "";
 var time = "";
 var frequency = "";
 
+
 $("#submit").on("click", function (event) {
 
     event.preventDefault();
 
     train = $("#train-name-input").val().trim();
     destination = $("#destination-input").val().trim();
-    time = $("#time-input").val().trim();
+    time = moment($("#time-input").val().trim(), "HH:mm").format("LT");
     frequency = $("#frequency-input").val().trim();
 
     database.ref().push({
@@ -40,17 +41,36 @@ $("#submit").on("click", function (event) {
 
 database.ref().on("child_added", function (childSnapshot) {
 
-    console.log(childSnapshot.val().train);
-    console.log(childSnapshot.val().destination);
-    console.log(childSnapshot.val().time);
-    console.log(childSnapshot.val().frequency);
+    var newFreq = $("#frequency-input").val();
+    console.log(newFreq);
 
-    // full list of items to the well
+    var newTime = $("#time-input").val();
+    console.log(time);
+
+    var timeConverted = moment(newTime, "HH:mm").subtract(1, "years");
+    console.log(timeConverted);
+
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+    var diffTime = moment().diff(moment(timeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+
+    var tRemainder = diffTime % newFreq;
+    console.log(tRemainder);
+
+    var minutes = newFreq - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + minutes);
+
+    var arrival = moment().add(minutes, "minutes");
+    console.log("ARRIVAL TIME: " + moment(arrival).format("hh:mm"));
+
     $("#border").append("<div class='table'><table><tr><td> " +
         childSnapshot.val().train +
         " </td><td> " + childSnapshot.val().destination +
-        " </td><td> " + childSnapshot.val().time +
         " </td><td> " + childSnapshot.val().frequency +
+        " </td><td> " + arrival +
+        " </td><td> " + minutes +
         " </td></tr><table>");
 
 }, function (errorObject) {
